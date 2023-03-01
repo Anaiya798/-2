@@ -113,3 +113,5 @@
      Home/List.html //главная html-страница 
      Order/List.html //html-страница оформления 
      ```
+2. Архитектура в виде диаграммы:
+![project_scheme](https://github.com/Anaiya798/CSharp-2/blob/main/hw02/task1/imgs/project_scheme.png)
