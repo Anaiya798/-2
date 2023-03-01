@@ -24,7 +24,17 @@
      ```C#
      public class ReagentsController: Controller {
       //возвращает представление товаров магазина в виде html-страницы
-      ReagentsListModelView obj = new ReagentsListModelView();
+      ReagentsListViewModel obj = new ReagentsListViewModel();
       return View(obj);
      }
+     ```
+   - **ViewModels** (задают шаблоны объектов, которые необходимо передать в представления)
+     ```C#
+     public class RaegentsListViewModel {
+         //шаблон объекта для представления Reagents/List.html
+     }
+     ```
+   - **Представления (Views)** 
+     ```C#
+     Reagents/List.html //html-страница для отображения товаров магазина 
      ```
