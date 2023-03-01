@@ -9,8 +9,12 @@
     public class Reagent {
       //класс, описывающий товары (реактивы)
     }
+   
     public class ShopCartItem {
       //описывает элемент (товар) в корзине покупателя
+    }
+     public class ShopCart {
+      //класс, описывающий корзину покупателя
     }
    ```
 - **Интерфейсы**
@@ -42,11 +46,21 @@
       //получение данных о категориях товаров из базы
      }
      ```
-  - **Контроллеры** 
+  - **Контроллеры**  (связывают модели и представления)
      ```C#
      public class ReagentsController: Controller {
+       ReagentsController(ReagentsRepository reagentsRep, CategoryRepositiry categoryRep) {
+       }
       //возвращает представление товаров магазина в виде html-страницы
       ReagentsListViewModel obj = new ReagentsListViewModel();
+      return View(obj);
+     }
+     
+     public class ShopCartController: Controller {
+      ShopCartController(ReagentsRepository reagentsRep, ShopCart shopCart) {
+      }
+      //возвращает представление корзины покупателя в виде html-страницы
+      ShopCartViewModel obj = new ShopCartViewModel();
       return View(obj);
      }
      ```
@@ -54,6 +68,8 @@
      ```C#
      public class RaegentsListViewModel {
          //шаблон объекта для представления Reagents/List.html
+     }
+     public class ShopCartViewModel {
      }
      ```
    - **Представления (Views)** 
