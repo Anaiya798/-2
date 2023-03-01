@@ -15,3 +15,8 @@
       Reagent getObjectReagent(int reagentId) //получение реактива по id
     }
    ```
+ - **Mock-классы** (реализуют соответствующие интерфейсы)
+     ```C#
+     public class MockCategory: IReagentsCategory {}
+     public class MockReagents: IAllReagents {}
+     ```
