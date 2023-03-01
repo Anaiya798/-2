@@ -1,6 +1,15 @@
 # REAXON
 ## Архитектура проекта
 1. Подразумеваемый функционал был подробно описан в [предыдущем задании](https://github.com/Anaiya798/CSharp-2/tree/main/hw01/task1). Теперь распишем основные структурные компоненты:
+- **Модели**
+   ```C#
+    public class Category {
+      //класс, описывающий категории товаров
+      }
+    public class Reagent {
+      //класс, описывающий товары (реактивы)
+    }
+   ```
 - **Интерфейсы**
    ```C#
     public interface IReagentsCategory {
@@ -15,10 +24,17 @@
       Reagent getObjectReagent(int reagentId) //получение реактива по id
     }
    ```
- - **Mock-классы** (реализуют соответствующие интерфейсы)
+ - **Работа с БД** 
      ```C#
-     public class MockCategory: IReagentsCategory {}
-     public class MockReagents: IAllReagents {}
+     public class AppDBContent: DbContent {
+      //соединение с БД
+     }
+     public class ReagentsRepositiry: IAllReagents {
+      //получение данных о товарах из базы
+     }
+     public class CategoryRepositiry: IReagentsCategory {
+      //получение данных о категориях товаров из базы
+     }
      ```
   - **Контроллеры** 
      ```C#
