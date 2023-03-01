@@ -29,6 +29,9 @@
      public class AppDBContent: DbContent {
       //соединение с БД
      }
+     static class DBObjects {
+      //загрузка данных в локальную базу
+     }
      public class ReagentsRepositiry: IAllReagents {
       //получение данных о товарах из базы
      }
