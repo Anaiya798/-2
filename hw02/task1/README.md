@@ -27,7 +27,7 @@
    ```C#
     public interface IAllReagents {
       IEnumerable<Reagent> Reagents {get; set;} //список всех реактивов
-      IEnumerable<Reagent> FavReagents {get; set;} //список "топовых" реактивов, которые загружаются автоматически при переходе на соответсвующую страницу товаров
+      IEnumerable<Reagent> FavReagents {get; set;} //список "топовых" реактивов, которые будут отображаться
       Reagent getObjectReagent(int reagentId) //получение реактива по id
     }
    ```
@@ -63,6 +63,14 @@
       ShopCartViewModel obj = new ShopCartViewModel();
       return View(obj);
      }
+     
+     public class HomeController: Controller {
+      HomeController(IAllReagents reagentsRep) {
+      }
+      //возвращает представление главной страницы в виде html
+      HomeViewModel obj = new HomeViewModel();
+      return View(obj);
+     }
      ```
    - **ViewModels** (задают шаблоны объектов, которые необходимо передать в представления)
      ```C#
@@ -70,10 +78,15 @@
          //шаблон объекта для представления Reagents/List.html
      }
      public class ShopCartViewModel {
+      //шаблон объекта для представления ShopCart/List.html
+     }
+     public class HomeViewModel {
+      //шаблон объекта для представления Home/List.html
      }
      ```
    - **Представления (Views)** 
      ```C#
      Reagents/List.html //html-страница для отображения товаров магазина 
      ShopCart/List.html //html-страница для отображения корзины покупателя 
+     Home/List.html //главная html-страница 
      ```
