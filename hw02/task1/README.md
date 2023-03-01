@@ -20,3 +20,11 @@
      public class MockCategory: IReagentsCategory {}
      public class MockReagents: IAllReagents {}
      ```
+  - **Контроллеры** 
+     ```C#
+     public class ReagentsController: Controller {
+      //возвращает представление товаров магазина в виде html-страницы
+      ReagentsListModelView obj = new ReagentsListModelView();
+      return View(obj);
+     }
+     ```
