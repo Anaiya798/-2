@@ -38,6 +38,10 @@
       IEnumerable<Reagent> FavReagents {get; set;} //список "топовых" реактивов, которые будут отображаться
       Reagent getObjectReagent(int reagentId) //получение реактива по id
     }
+    
+    public interface IAllOrders {
+      void createOrder();
+    }
    ```
  - **Работа с БД** 
      ```C#
@@ -45,13 +49,16 @@
       //соединение с БД
      }
      static class DBObjects {
-      //загрузка данных в локальную базу
+      //загрузка данных в локальную базу при инициализации (запуске проекта)
      }
      public class ReagentsRepositiry: IAllReagents {
       //получение данных о товарах из базы
      }
      public class CategoryRepositiry: IReagentsCategory {
       //получение данных о категориях товаров из базы
+     }
+     public class OrdersRepository: IAllOrders {
+      //запись данных о заказах в базу
      }
      ```
   - **Контроллеры**  (связывают модели и представления)
@@ -79,6 +86,13 @@
       HomeViewModel obj = new HomeViewModel();
       return View(obj);
      }
+     
+     public class OrderController: Controller {
+      OrderController(IAllOrders orders,  ShopCart shopCart) {
+      }
+      //возвращает представление страницы  оформления заказа в виде html
+      return View();
+     }
      ```
    - **ViewModels** (задают шаблоны объектов, которые необходимо передать в представления)
      ```C#
@@ -97,4 +111,5 @@
      Reagents/List.html //html-страница для отображения товаров магазина 
      ShopCart/List.html //html-страница для отображения корзины покупателя 
      Home/List.html //главная html-страница 
+     Order/List.html //html-страница оформления 
      ```
