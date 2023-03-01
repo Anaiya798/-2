@@ -49,7 +49,7 @@
   - **Контроллеры**  (связывают модели и представления)
      ```C#
      public class ReagentsController: Controller {
-       ReagentsController(ReagentsRepository reagentsRep, CategoryRepositiry categoryRep) {
+       ReagentsController(IAllReagents reagentsRep, IReagentsCategory categoryRep) {
        }
       //возвращает представление товаров магазина в виде html-страницы
       ReagentsListViewModel obj = new ReagentsListViewModel();
@@ -57,7 +57,7 @@
      }
      
      public class ShopCartController: Controller {
-      ShopCartController(ReagentsRepository reagentsRep, ShopCart shopCart) {
+      ShopCartController(IAllReagents reagentsRep, ShopCart shopCart) {
       }
       //возвращает представление корзины покупателя в виде html-страницы
       ShopCartViewModel obj = new ShopCartViewModel();
@@ -75,4 +75,5 @@
    - **Представления (Views)** 
      ```C#
      Reagents/List.html //html-страница для отображения товаров магазина 
+     ShopCart/List.html //html-страница для отображения корзины покупателя 
      ```
