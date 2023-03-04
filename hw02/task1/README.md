@@ -113,6 +113,9 @@
      Home/List.html //главная html-страница 
      Order/List.html //html-страница оформления 
      ```
+   **Основные таблицы базы данных:**  
+   
+   ![db_tables](https://github.com/Anaiya798/CSharp-2/blob/main/hw02/task1/imgs/db_tables.png) 
 2. Архитектура в виде диаграммы:
 ![project_scheme](https://github.com/Anaiya798/CSharp-2/blob/main/hw02/task1/imgs/project_scheme.png)  
 3. Возможности использования паттернов: 
