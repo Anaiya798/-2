@@ -96,5 +96,24 @@ public class PdfReport : IPaymentReport
     }
 }
    ```
- Если захотим добавить новый тип отчета, нужно создать новый класс и унаследоваться от IPaymentReport. Таким образом, класс IPaymentReport реализует
- закрыт от модификаций, но доступен для расширений.
+   Если захотим добавить новый тип отчета, нужно создать новый класс и унаследоваться от *IPaymentReport*. Таким образом, класс *IPaymentReport* реализует
+   закрыт от модификаций, но доступен для расширений.
+ 
+ 3. **Принцип подстановки Барбары Лисков**. У нас есть абстрактный класс *IAllReagents* и есть наследуемый от него класс *ReagentsRepositiry*, который отвечает за 
+ хранение всех реактивов, имеющихся в базе данных.
+ ```C#
+    public abstract class IAllReagents {
+      IEnumerable<Reagent> Reagents {get; set;} //список всех реактивов
+      IEnumerable<Reagent> FavReagents {get; set;} //список "топовых" реактивов, которые будут отображаться
+      Reagent getObjectReagent(int reagentId) //получение реактива по id
+    }
+    
+    public class ReagentsRepositiry: IAllReagents {
+      public IEnumerable<Reagent> Reagents =>... //достаем список реактивов из базы данных 
+      public IEnumerable<Reagent> FavReagents =>... //достаем список "топовых" реактивов 
+      Reagent getObjectReagent(int reagentId) {
+       //реализуем метод, если реактив не найден, возвращаем пустой объект класса Reagent
+     }
+   ```
+   Класс *ReagentsRepositiry* реализует все поля и методы базового класса, не усиливает предусловий, не ослабляет постусловий, не нарушает инвариантов и не 
+   генерирует типов исключений, не описанных в базовом классе. Поэтому он не нарушает принцип подстановки Барбары Лисков.
