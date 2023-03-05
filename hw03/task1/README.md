@@ -136,3 +136,35 @@ public class PdfReport : IPaymentReport
      //для особо опасных выводим общую информацию + информацию об особой опасности
     }
    ```
+5. **Принцип инверсии зависимостей**. Система Интернет-магазина периодически рассылает пользователям сообщения по e-mail: уведомление об успешном заказе, чек (возможно, что-то еще). Реализуем это с помощью следующего кода: 
+ ```C#
+public interface IEmail
+{
+    void Send();
+}
+
+public class SuccessOrderEmail : IEmail
+{
+    public void Send()
+    {
+        // отправка уведомления об успешном заказе
+    }
+}
+
+public class ReceiptEmail : IEmail
+{
+    public void Send()
+    {
+        // отправка чека
+    }
+}
+
+public class Notification
+{
+    public void Notify(IEmail email)
+    {
+        email.Send();
+    }
+}
+   ```
+Видим, что более высокоуровневый класс (*Notification*) не зависит от более низкоуровневых классов (*SuccessOrderEmail* и *ReceiptEmail*), но оба они зависят от абстракции (интерфейса) *IEmail*, а абстракция нигде не зависит от деталей. Это является примером реализации принципа инверсии зависимостей.
