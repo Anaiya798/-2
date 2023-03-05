@@ -70,7 +70,7 @@ class CreditCardChecker: CustomerDataChecker
 }
 
    ```
-2. **Принцип открыт/закрыт**. Допустим, покупатель успешно завершил оплату и хочет сохранить информацию о выполненной операции в формате xlsx/pdf.
+2. **Принцип открыт/закрыт**. Допустим, покупатель успешно завершил оплату и хочет сохранить чек в формате xlsx/pdf.
 ```C#
 public class IPaymentReport
 {
@@ -117,3 +117,22 @@ public class PdfReport : IPaymentReport
    ```
    Класс *ReagentsRepositiry* реализует все поля и методы базового класса, не усиливает предусловий, не ослабляет постусловий, не нарушает инвариантов и не 
    генерирует типов исключений, не описанных в базовом классе. Поэтому он не нарушает принцип подстановки Барбары Лисков.
+   
+ 4. **Принцип разделения интерфейсов**. Допустим, для особо опасных реактивов мы хотим выводить во вкладке с товарами дополнительную информацию о том, что они особо опасны. Создадим для этой цели отдельный интерфейс, чтобы избежать лишних зависимостей:
+ ```C#
+    public interface IProductsInformation {
+      void ShowProductsInfo(IAllReagents reagents); 
+    }
+    
+    public interface IDangerInformation {
+      void ShowHighDangerStatus(IAllReagents highDangerReagents); 
+    }
+    
+    public class NormalReagentsInformation: IProductsInformation {
+     //для обычных реактивов просто выводим информацию о них
+    }
+    
+    public class DangerReagentsInformation: IProductsInformation, IDangerInformation {
+     //для особо опасных выводим общую информацию + информацию об особой опасности
+    }
+   ```
