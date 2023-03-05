@@ -25,15 +25,15 @@
     }
     
    ```
-- **Интерфейсы**
+- **Абстрактные классы** (возможно реализация в виде интерфейсов)
    ```C#
-    public interface IReagentsCategory {
+    public abstract class IReagentsCategory {
       //вывод всех категорий товаров
       IEnumerable<Category> AllCategories {get;}
     }
    ```
    ```C#
-    public interface IAllReagents {
+    public abstract class IAllReagents {
       IEnumerable<Reagent> Reagents {get; set;} //список всех реактивов
       IEnumerable<Reagent> FavReagents {get; set;} //список "топовых" реактивов, которые будут отображаться
       Reagent getObjectReagent(int reagentId) //получение реактива по id
