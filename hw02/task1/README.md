@@ -40,7 +40,7 @@
     }
     
     public abstract class AllOrders {
-      void createOrder();
+      public abstract void createOrder();
     }
    ```
  - **Работа с БД** (Database service)
