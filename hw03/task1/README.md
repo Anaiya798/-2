@@ -102,16 +102,16 @@ public class PdfReport : IPaymentReport
  3. **Принцип подстановки Барбары Лисков**. У нас есть абстрактный класс *IAllReagents* и есть наследуемый от него класс *ReagentsRepositiry*, который отвечает за 
  хранение всех реактивов, имеющихся в базе данных.
  ```C#
-    public abstract class IAllReagents {
+    public abstract class AllReagents {
       IEnumerable<Reagent> Reagents {get; set;} //список всех реактивов
       IEnumerable<Reagent> FavReagents {get; set;} //список "топовых" реактивов, которые будут отображаться
       Reagent getObjectReagent(int reagentId) //получение реактива по id
     }
     
-    public class ReagentsRepositiry: IAllReagents {
+    public class ReagentsRepositiry: AllReagents {
       public IEnumerable<Reagent> Reagents =>... //достаем список реактивов из базы данных 
       public IEnumerable<Reagent> FavReagents =>... //достаем список "топовых" реактивов 
-      Reagent getObjectReagent(int reagentId) {
+      public abstract Reagent getObjectReagent(int reagentId) {
        //реализуем метод, если реактив не найден, возвращаем пустой объект класса Reagent
      }
    ```
