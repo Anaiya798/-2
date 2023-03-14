@@ -20,12 +20,12 @@ class CustomerDataProcessing
 abstract class CustomerDataChecker
 {
     public CustomerDataChecker Successor { get; set; }
-    public abstract void Check(List<string> customerData);
+    public abstract void Check(Order customerData);
 }
     
 class PhoneChecker: CustomerDataChecker
 {
-    public override void Check(List<string> customerData)
+    public override void Check(Order customerData)
     {
         bool correct = false;
         // провеока корректности номера телефона
@@ -41,7 +41,7 @@ class PhoneChecker: CustomerDataChecker
 
 class EmailChecker: CustomerDataChecker
 {
-    public override void Check(List<string> customerData)
+    public override void Check(Order customerData)
     {
         bool correct = false;
         // провеока корректности номера email
@@ -56,7 +56,7 @@ class EmailChecker: CustomerDataChecker
 
 class CreditCardChecker: CustomerDataChecker
 {
-    public override void Check(List<string> customerData)
+    public override void Check(order customerData)
     {
         bool correct = false;
         // проверка корректности номера карты
