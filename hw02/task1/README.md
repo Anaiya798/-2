@@ -36,7 +36,7 @@
     public abstract class AllReagents {
       IEnumerable<Reagent> Reagents {get; set;} //список всех реактивов
       IEnumerable<Reagent> FavReagents {get; set;} //список "топовых" реактивов, которые будут отображаться
-      Reagent getObjectReagent(int reagentId) //получение реактива по id
+      public abstract Reagent getObjectReagent(int reagentId) //получение реактива по id
     }
     
     public abstract class AllOrders {
