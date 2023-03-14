@@ -27,19 +27,19 @@
    ```
 - **Абстрактные классы** (возможно реализация в виде интерфейсов)
    ```C#
-    public abstract class IReagentsCategory {
+    public abstract class ReagentsCategory {
       //вывод всех категорий товаров
       IEnumerable<Category> AllCategories {get;}
     }
    ```
    ```C#
-    public abstract class IAllReagents {
+    public abstract class AllReagents {
       IEnumerable<Reagent> Reagents {get; set;} //список всех реактивов
       IEnumerable<Reagent> FavReagents {get; set;} //список "топовых" реактивов, которые будут отображаться
       Reagent getObjectReagent(int reagentId) //получение реактива по id
     }
     
-    public interface IAllOrders {
+    public abstract class AllOrders {
       void createOrder();
     }
    ```
@@ -51,20 +51,20 @@
      public class DBObjects {
       //загрузка данных в локальную базу при инициализации (запуске проекта)
      }
-     public class ReagentsRepositiry: IAllReagents {
+     public class ReagentsRepositiry: AllReagents {
       //получение данных о товарах из базы
      }
-     public class CategoryRepositiry: IReagentsCategory {
+     public class CategoryRepositiry: ReagentsCategory {
       //получение данных о категориях товаров из базы
      }
-     public class OrdersRepository: IAllOrders {
+     public class OrdersRepository: AllOrders {
       //запись данных о заказах в базу
      }
      ```
   - **Контроллеры**  (связывают модели и представления)
      ```C#
      public class ReagentsController: Controller {
-       ReagentsController(IAllReagents reagentsRep, IReagentsCategory categoryRep) {
+       ReagentsController(AllReagents reagentsRep, ReagentsCategory categoryRep) {
        }
       //возвращает представление товаров магазина в виде html-страницы
       ReagentsListViewModel obj = new ReagentsListViewModel();
@@ -72,7 +72,7 @@
      }
      
      public class ShopCartController: Controller {
-      ShopCartController(IAllReagents reagentsRep, ShopCart shopCart) {
+      ShopCartController(AllReagents reagentsRep, ShopCart shopCart) {
       }
       //возвращает представление корзины покупателя в виде html-страницы
       ShopCartViewModel obj = new ShopCartViewModel();
@@ -80,7 +80,7 @@
      }
      
      public class HomeController: Controller {
-      HomeController(IAllReagents reagentsRep) {
+      HomeController(AllReagents reagentsRep) {
       }
       //возвращает представление главной страницы в виде html
       HomeViewModel obj = new HomeViewModel();
@@ -88,7 +88,7 @@
      }
      
      public class OrderController: Controller {
-      OrderController(IAllOrders orders,  ShopCart shopCart) {
+      OrderController(AllOrders orders,  ShopCart shopCart) {
       }
       //возвращает представление страницы  оформления заказа в виде html
       return View();
