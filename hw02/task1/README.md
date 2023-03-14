@@ -96,7 +96,7 @@
      ```
    - **ViewModels** (задают шаблоны объектов, которые необходимо передать в представления)
      ```C#
-     public class RaegentsListViewModel {
+     public class ReagentsListViewModel {
          //шаблон объекта для представления Reagents/List.html
      }
      public class ShopCartViewModel {
