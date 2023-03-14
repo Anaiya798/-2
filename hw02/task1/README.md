@@ -45,7 +45,7 @@
    ```
  - **Работа с БД** (Database service)
      ```C#
-     public class AppDBContent: DbContent {
+     public class AppDBContent: DbContext {
       //соединение с БД
      }
      public class DBObjects {
