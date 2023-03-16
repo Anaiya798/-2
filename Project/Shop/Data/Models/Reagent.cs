@@ -1,4 +1,5 @@
-﻿namespace Shop.Models
+﻿using System;
+namespace Shop.Models
 {
     public class Reagent
     {
@@ -11,5 +12,10 @@
         public string Purity { get; set; }
         public bool IsFavourite { get; set; }
         public string Img { get; set; }
+
+        public override bool Equals(Object obj)
+        {
+            //сравниваем реагенты
+        }
     }
 }
