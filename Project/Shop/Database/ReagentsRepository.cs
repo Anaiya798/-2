@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Shop.Data.Abstractions;
+﻿using Shop.Data.Abstractions;
 using Shop.Models;
 using System.Collections.Generic;
 using System.Linq;

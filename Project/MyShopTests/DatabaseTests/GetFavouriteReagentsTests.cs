@@ -20,17 +20,16 @@ namespace MyShopTests.DatabaseTests
                 new Reagent() { Id = 3, Name = "Distilled water", IsFavourite = true},
 
              };
-
-
-            _dbStub.Reagent.AddRange(_reagents);
-            _dbStub.SaveChanges();
-
-            _reagentsRepository = new ReagentsRepositiry(_dbStub);
         }
 
         [Test]
         public void MixedReagentsTest()
         {
+            _dbStub.Reagent.AddRange(_reagents);
+            _dbStub.SaveChanges();
+
+            _reagentsRepository = new ReagentsRepositiry(_dbStub);
+
             var favReagents = _reagentsRepository.FavReagents.ToList();
             Assert.IsTrue(favReagents.Contains(_reagents[1]));
             Assert.IsTrue(favReagents.Contains(_reagents[2]));
@@ -43,6 +42,8 @@ namespace MyShopTests.DatabaseTests
             _dbStub.Reagent.Remove(_reagents[0]);
             _dbStub.SaveChanges();
 
+            _reagentsRepository = new ReagentsRepositiry(_dbStub);
+
             var favReagents = _reagentsRepository.FavReagents.ToList();
             Assert.That(favReagents.Count, Is.EqualTo(2));
         }
@@ -53,6 +54,8 @@ namespace MyShopTests.DatabaseTests
             _dbStub.Reagent.RemoveRange(_reagents[1], _reagents[2]);
             _dbStub.SaveChanges();
 
+            _reagentsRepository = new ReagentsRepositiry(_dbStub);
+
             var favReagents = _reagentsRepository.FavReagents.ToList();
             Assert.That(favReagents.Count, Is.EqualTo(0));
         }
@@ -62,6 +65,8 @@ namespace MyShopTests.DatabaseTests
         {
             _dbStub.Reagent.Add(_reagents[0]);
             _dbStub.SaveChanges();
+
+            _reagentsRepository = new ReagentsRepositiry(_dbStub);
 
             var favReagents = _reagentsRepository.FavReagents.ToList();
             Assert.That(favReagents.Count, Is.EqualTo(0));
