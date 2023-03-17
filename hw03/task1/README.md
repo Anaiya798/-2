@@ -72,9 +72,9 @@ class CreditCardChecker: CustomerDataChecker
    ```
 2. **Принцип открыт/закрыт**. Допустим, покупатель успешно завершил оплату и хочет сохранить чек в формате xlsx/pdf.
 ```C#
-public class IPaymentReport
+public abstract class IPaymentReport
 {
-    public virtual void SaveReport(Bill bill)
+    public virtual void SaveReport(Order order)
     {
         // базовый класс
     }
@@ -82,7 +82,7 @@ public class IPaymentReport
 
 public class XlsxReport : IPaymentReport
 {
-    public override void SaveReport(Bill bill)
+    public override void SaveReport(Order order)
     {
         // генерация отчета об операции в формате xlsx
     }
@@ -90,7 +90,7 @@ public class XlsxReport : IPaymentReport
 
 public class PdfReport : IPaymentReport
 {
-    public override void GenerateReport(Bill bill)
+    public override void GenerateReport(Order order)
     {
         // генерация отчета об операции в формате pdf
     }
