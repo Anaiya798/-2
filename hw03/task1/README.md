@@ -90,7 +90,7 @@ public class XlsxReport : IPaymentReport
 
 public class PdfReport : IPaymentReport
 {
-    public override void GenerateReport(Order order)
+    public override void SaveReport(Order order)
     {
         // генерация отчета об операции в формате pdf
     }
