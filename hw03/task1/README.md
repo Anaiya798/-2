@@ -74,7 +74,7 @@ class CreditCardChecker: CustomerDataChecker
 ```C#
 public abstract class IPaymentReport
 {
-    public virtual void SaveReport(Order order)
+    public virtual void saveReport(Order order)
     {
         // базовый класс
     }
@@ -82,7 +82,7 @@ public abstract class IPaymentReport
 
 public class XlsxReport : IPaymentReport
 {
-    public override void SaveReport(Order order)
+    public override void saveReport(Order order)
     {
         // генерация отчета об операции в формате xlsx
     }
@@ -90,7 +90,7 @@ public class XlsxReport : IPaymentReport
 
 public class PdfReport : IPaymentReport
 {
-    public override void SaveReport(Order order)
+    public override void saveReport(Order order)
     {
         // генерация отчета об операции в формате pdf
     }
