@@ -26,7 +26,6 @@ namespace MyShopTests.DatabaseTests
         [Test]
         public void EmptyDbTest()
         {
-
             _reagentsRepository = new ReagentsRepositiry(_dbStub);
 
             var allReagents = _reagentsRepository.Reagents.ToList();
@@ -36,7 +35,7 @@ namespace MyShopTests.DatabaseTests
         [Test]
         public void FilledDbTest()
         {
-            _dbStub.Reagent.Remove(_reagents[0]);
+            _dbStub.Reagent.AddRange(_reagents);
             _dbStub.SaveChanges();
 
             _reagentsRepository = new ReagentsRepositiry(_dbStub);
