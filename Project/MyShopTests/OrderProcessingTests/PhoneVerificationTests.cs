@@ -1,4 +1,3 @@
-using System;
 using Shop.CustomerDataProcessing;
 using Shop.Data.Models;
 namespace ShopTests.OrderProcessingTests

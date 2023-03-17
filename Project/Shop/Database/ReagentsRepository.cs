@@ -9,15 +9,27 @@ namespace Shop.Database
     {
         //получение данных о товарах из базы
 
-        private readonly AppDBContent appDbContent;
+        private AppDBContent _appDbContent;
+
+        public AppDBContent AppDbContent
+        {
+            get
+            {
+                return _appDbContent;
+            }
+            private set
+            {
+                _appDbContent = value;
+            }
+        }
 
         public ReagentsRepositiry (AppDBContent appDbContent)
         {
-            this.appDbContent = appDbContent;
+            AppDbContent = appDbContent;
         }
 
-        public IEnumerable<Reagent> Reagents => appDbContent.Reagent;
-        public IEnumerable<Reagent> FavReagents => appDbContent.Reagent.Where(regent => regent.IsFavourite);
-        public override Reagent getObjectReagent(int reagentId) => appDbContent.Reagent.FirstOrDefault(reagent => reagent.Id == reagentId);
+        public IEnumerable<Reagent> Reagents => AppDbContent.Reagent;
+        public IEnumerable<Reagent> FavReagents => AppDbContent.Reagent.Where(regent => regent.IsFavourite);
+        public override Reagent getObjectReagent(int reagentId) => AppDbContent.Reagent.FirstOrDefault(reagent => reagent.Id == reagentId);
     }
 }

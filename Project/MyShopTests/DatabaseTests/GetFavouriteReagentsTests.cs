@@ -3,6 +3,7 @@ using Shop.Models;
 
 namespace MyShopTests.DatabaseTests
 {
+    [TestFixture]
     public class GetFavouriteReagentsTests
     {
         private AppDBContent _dbStub;
@@ -15,20 +16,20 @@ namespace MyShopTests.DatabaseTests
             _dbStub = new AppDBContent();
 
             _reagents = new List<Reagent>() {
-                new Reagent() { Id = 1, Name = "Formic acid" , IsFavourite = false},
-                new Reagent() { Id = 2, Name = "Ethanol", IsFavourite = true},
-                new Reagent() { Id = 3, Name = "Distilled water", IsFavourite = true},
+                new Reagent() { Name = "Formic acid" , IsFavourite = false},
+                new Reagent() { Name = "Ethanol", IsFavourite = true},
+                new Reagent() { Name = "Distilled water", IsFavourite = true},
 
              };
+
+            _reagentsRepository = new ReagentsRepositiry(_dbStub);
         }
 
         [Test]
         public void MixedReagentsTest()
         {
-            _dbStub.Reagent.AddRange(_reagents);
-            _dbStub.SaveChanges();
-
-            _reagentsRepository = new ReagentsRepositiry(_dbStub);
+            _reagentsRepository.AppDbContent.Reagent.AddRange(_reagents);
+            _reagentsRepository.AppDbContent.SaveChanges();
 
             var favReagents = _reagentsRepository.FavReagents.ToList();
             Assert.IsTrue(favReagents.Contains(_reagents[1]));
@@ -39,8 +40,8 @@ namespace MyShopTests.DatabaseTests
         [Test]
         public void AllFavReagentsTest()
         {
-            _dbStub.Reagent.Remove(_reagents[0]);
-            _dbStub.SaveChanges();
+            _reagentsRepository.AppDbContent.Reagent.Remove(_reagents[0]);
+            _reagentsRepository.AppDbContent.SaveChanges();
 
             _reagentsRepository = new ReagentsRepositiry(_dbStub);
 
@@ -51,8 +52,8 @@ namespace MyShopTests.DatabaseTests
         [Test]
         public void EmptyDbTest()
         {
-            _dbStub.Reagent.RemoveRange(_reagents[1], _reagents[2]);
-            _dbStub.SaveChanges();
+            _reagentsRepository.AppDbContent.Reagent.RemoveRange(_reagents[1], _reagents[2]));
+            _reagentsRepository.AppDbContent.SaveChanges();
 
             _reagentsRepository = new ReagentsRepositiry(_dbStub);
 
@@ -63,9 +64,9 @@ namespace MyShopTests.DatabaseTests
         [Test]
         public void NoFavReagentsTest()
         {
-            _dbStub.Reagent.Add(_reagents[0]);
-            _dbStub.SaveChanges();
-
+            _reagentsRepository.AppDbContent.Reagent.Add(_reagents[0]);
+            _reagentsRepository.AppDbContent.SaveChanges();
+           
             _reagentsRepository = new ReagentsRepositiry(_dbStub);
 
             var favReagents = _reagentsRepository.FavReagents.ToList();

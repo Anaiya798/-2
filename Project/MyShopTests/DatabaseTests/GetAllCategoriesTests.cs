@@ -3,6 +3,7 @@ using Shop.Models;
 
 namespace MyShopTests.DatabaseTests
 {
+    [TestFixture]
     public class GetAllCategoriesTests
     {
         private AppDBContent _dbStub;
@@ -15,18 +16,17 @@ namespace MyShopTests.DatabaseTests
             _dbStub = new AppDBContent();
 
             _categories = new List<Category>() {
-                new Category() { Id = 1, Name = "Inorganic chemistry", Desc=""},
-                new Category() { Id = 2, Name = "Organic chemistry", Desc = ""},
-                new Category() { Id = 3, Name = "Biologically active compounds", Desc = ""},
+                new Category() {Name = "Inorganic chemistry", Desc=""},
+                new Category() {Name = "Organic chemistry", Desc = ""},
+                new Category() {Name = "Biologically active compounds", Desc = ""},
              };
+
+            _categoryRepository = new CategoryRepository(_dbStub);
         }
 
         [Test]
         public void EmptyDbTest()
         {
-
-            _categoryRepository = new CategoryRepository(_dbStub);
-
             var allCategories = _categoryRepository.AllCategories.ToList();
             Assert.That(allCategories.Count, Is.EqualTo(0));
         }
@@ -34,10 +34,8 @@ namespace MyShopTests.DatabaseTests
         [Test]
         public void FilledDbTest()
         {
-            _dbStub.Category.AddRange(_categories);
-            _dbStub.SaveChanges();
-
-            _categoryRepository = new CategoryRepository(_dbStub);
+            _categoryRepository.AppDbContent.Category.AddRange(_categories);
+            _categoryRepository.AppDbContent.SaveChanges();
 
             var allCategories = _categoryRepository.AllCategories.ToList();
             Assert.IsTrue(allCategories.Contains(_categories[0])) ;

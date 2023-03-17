@@ -16,8 +16,8 @@ namespace MyShopTests.DatabaseTests
             _dbStub = new AppDBContent();
 
             _reagents = new List<Reagent>() {
-                new Reagent() { Id = 1, Name = "Formic acid" , Category = 1},
-                new Reagent() { Id = 15, Name = "Ethanol", Category = 1 }
+                new Reagent() { Name = "Formic acid" , Category = 1},
+                new Reagent() { Name = "Ethanol", Category = 1 }
              };
      
 
@@ -34,7 +34,7 @@ namespace MyShopTests.DatabaseTests
             Assert.That(desiredReagent.Name, Is.EqualTo(_reagents[0].Name));
             Assert.That(desiredReagent.Category, Is.EqualTo(_reagents[0].Category));
 
-            desiredReagent = _reagentsRepository.getObjectReagent(15);
+            desiredReagent = _reagentsRepository.getObjectReagent(2);
             Assert.That(desiredReagent.Name, Is.EqualTo(_reagents[1].Name));
             Assert.That(desiredReagent.Category, Is.EqualTo(_reagents[1].Category));
         }
@@ -42,9 +42,12 @@ namespace MyShopTests.DatabaseTests
         [Test]
         public void NonExistentIdTest()
         {
-            var desiredReagent = _reagentsRepository.getObjectReagent(2);
+            var desiredReagent = _reagentsRepository.getObjectReagent(3);
             Assert.Null(desiredReagent);
-   
+
+            desiredReagent = _reagentsRepository.getObjectReagent(15);
+            Assert.Null(desiredReagent);
+
             desiredReagent = _reagentsRepository.getObjectReagent(-100);
             Assert.Null(desiredReagent);
 

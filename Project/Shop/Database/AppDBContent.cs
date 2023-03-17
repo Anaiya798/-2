@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Shop.Data.Models;
 using Shop.Models;
 
 namespace Shop.Database
@@ -13,5 +14,8 @@ namespace Shop.Database
 
         public DbSet<Reagent> Reagent { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
+
     }
 }

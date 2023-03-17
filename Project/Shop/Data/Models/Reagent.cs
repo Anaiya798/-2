@@ -4,7 +4,7 @@ namespace Shop.Models
     public class Reagent
     {
         //класс, описывающий реактивы
-        public int Id { get; set; }
+        public uint Id { get; set; }
         public string Name { get; set; }
         public uint Price { get; set; }
         public ushort Category { get; set; }
