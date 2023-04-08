@@ -1,0 +1,4 @@
+﻿ALTER PROCEDURE [dbo].[sp_GetTeamPlayers]
+    @teamID int
+AS
+    SELECT * FROM Player WHERE TeamID=@teamID
