@@ -1,0 +1,10 @@
+﻿<h1>Все реактивы</h1>
+<h2>@Model.CurrCategory</h2>
+@{
+	foreach (var reagent in Model.AllReagents){
+		<div>
+			<h3>Название: @reagent.Name</h3>
+			<p>Цена: @reagent.Price.ToString("c")</p>
+		</div>
+	}
+}
