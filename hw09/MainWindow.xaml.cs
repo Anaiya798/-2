@@ -73,9 +73,5 @@ namespace WpfApp
             outputText.Text = BigImgText[btnName];
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }
