@@ -1,0 +1,50 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        FontFamily="Tahoma"
+        FontSize="16"
+        Title="MainWindow" Height="470" Width="1100">
+    <Window.Resources>
+        <ControlTemplate x:Key="NoMouseOverButtonTemplate"   
+                 TargetType="Button">
+            <Border Background="{TemplateBinding Background}"  
+          BorderBrush="{TemplateBinding BorderBrush}"  
+          BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled"  
+             Value="False">
+                    <Setter Property="Background"  
+              Value="{x:Static SystemColors.ControlLightBrush}" />
+                    <Setter Property="Foreground"  
+              Value="{x:Static SystemColors.GrayTextBrush}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <ListBox Name="Electronics" Background="Lavender" Margin="0,0,583,0">
+            <ListBoxItem Margin="10, 35,-10,10" Width="270" RenderTransformOrigin="0.5,0.5" Padding="0">
+                <Button Name="Phones" Height="50" Width="268" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Phones_Btn_Click">Phones</Button>
+            </ListBoxItem>
+            <ListBoxItem Margin="10, 35,-10,10" Width="268" RenderTransformOrigin="0.5,0.5" Padding="0">
+                <Button Name="TVs" Height="50" Width="266" VerticalAlignment="Center" HorizontalAlignment="Center" Click="TVs_Btn_Click">TVs</Button>
+            </ListBoxItem>
+            <ListBoxItem Margin="10, 35,-10,10" Width="268" RenderTransformOrigin="0.5,0.5" Padding="0">
+                <Button Name="Fridges" Height="50" Width="266" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Fridges_Btn_Click">Fridges</Button>
+            </ListBoxItem>
+            <ListBoxItem Margin="10, 35,-10,10" Width="268" RenderTransformOrigin="0.5,0.5" Padding="0">
+                <Button Name="Microwaves" Height="50" Width="266" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Microwaves_Btn_Click">Microwaves</Button>
+            </ListBoxItem>
+        </ListBox>
+        
+        <Frame Name="MyFrame" Source="View/MainPage.xaml" Margin="500,-1,0,0" BorderThickness="0"/>
+    </Grid>
+</Window>

@@ -1,0 +1,15 @@
+﻿<Page x:Class="ApplicationNavigation.View.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Electronics" Height="350" Width="525" Background="#FFFFFA">
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="35" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <TextBlock TextAlignment="Center" Margin="6,131,-6,-131"> Electronics</TextBlock>
+
+    </Grid>
+</Page>
