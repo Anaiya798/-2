@@ -1,8 +1,0 @@
-﻿@model ReagentsListViewModel
-<div class="row mt-5 mb-2 ml-5">
-	@{
-	foreach (Reagent reagent in Model.AllReagents){
-		@Html.Partial("AllReagents", reagent)
-	}
-}
-</div>
