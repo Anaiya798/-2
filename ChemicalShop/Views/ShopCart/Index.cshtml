@@ -1,0 +1,20 @@
+﻿@model ShopCartViewModel
+<head>
+	<link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body>
+	<div class="container cart-container">
+		@for (int i=0;  i<Model.UserShopCart.ListShopItems.Count; i++)
+		{
+			<div class="alert alert-warning mt-2">
+				<b>Наименование:</b> @Model.ShopCartReagents[i].Name <br />
+				<b>Описание:</b> @Model.ShopCartReagents[i].Desc <br />
+				<b>Цена:</b> @Model.UserShopCart.ListShopItems[i].Price руб.
+
+				
+			</div>
+		}
+		<hr />
+		<a class="btn btn-danger" asp-controller="Order" asp-action="Checkout">Оплатить</a>
+	</div>
+</body>
